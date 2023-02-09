@@ -4,7 +4,11 @@
 #
 # Copyright (c) 2013 Nyr. Released under the MIT License.
 
-# Script modified for Kali 22.4 usage including logging
+# START: Script modified for Kali 22.4 usage including logging plus
+kali=$(lsb_release -a | grep "kali-rolling" | awk '{ print $2; }')
+content=$(cat /etc/debian_version)
+str="kali-rolling"
+
 if [ "$str" = "$kali" ]; then
         if [ "$str" = "$content" ]; then
         echo "12" > '/etc/debian_version'
@@ -14,6 +18,7 @@ if [ "$str" = "$kali" ]; then
 else
     echo "It's not Kali"
 fi
+# END: Script modified for Kali 22.4 usage including logging plus
 
 # Detect Debian users running the script with "sh" instead of bash
 if readlink /proc/$$/exe | grep -q "dash"; then
